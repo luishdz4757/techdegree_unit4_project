@@ -24,7 +24,7 @@ class Game {
    }
  }
  const game = new Game();
-game.phrase.forEach((phrase, index) => {
+game.phrases.forEach((phrase, index) => {
 console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
 });
 //  const logPhrase = (phrase) => {
