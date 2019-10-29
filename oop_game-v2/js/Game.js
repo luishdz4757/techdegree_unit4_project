@@ -23,10 +23,34 @@ class Game {
         const randomNum = Math.floor(Math.random() * this.phrase.length)
         return this.phrase[randomNum];
     }
+    startGame() {
+        const idOverlay = document.getElementById('overlay');
+        idOverlay.style.display = 'none';
+        this.getRandomPhrase().addPhraseToDisplay();
+       
+    }
+
+    handleInteraction(){
+
+    }
+    
+    checkForWin (){
+        const fullPhrase = document.queryselectorAll('.letter')
+        const correctlyPickedLetters = document.querySelectorAll ('.show')
+        if ( fullPhrase === correctlyPickedLetters ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    removeLife () {
+        missed += 1; 
+        const livesRemaining = document.getElementsByClassName('tries').length();
+        if (livesRemaining === 0) {
+            gameOver();
+        } 
+    }
+    gameOver(gameWon) {
+        
+    }
   }
-
- // const logPhrase = (phrase) => {
- //    console.log(`Phrase - phrase: `, phrase.phrase);
- //  };
-
-  
