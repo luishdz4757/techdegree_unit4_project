@@ -43,16 +43,16 @@ class Game {
             return false;
         }
     }
-    removeLife () {
-        this.missed += 1; 
-        const livesRemaining = document.querySelectorAll('.tries img');
-        if ( 1 ) {
-            gameOver(true);
-        } else {
-            this.gameOver();
-        }
-    }
-    gameOver(gameWon) {
+  //  removeLife () {
+   //     this.missed += 1; 
+   //     const livesRemaining = document.querySelectorAll('.tries img');
+   //     if ( 1 ) {
+   //         gameOver(true);
+   //     } else {
+    //        this.gameOver();
+    //    }
+   // }
+   // gameOver(gameWon) {
         
-    }
+    //}
   }
