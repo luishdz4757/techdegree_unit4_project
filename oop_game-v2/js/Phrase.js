@@ -31,19 +31,18 @@
            }
         }
         showMatchedLetter(letter) {
-            const liElement = document.querySelectorAll('#phrase li');
+            const liElement = document.getElementsByClassName('letter');
 
-            if (this.checkLetter(letter) === true){
-                liElement.forEach (function(letter) {
-                    if (liElement.textContent === letter) {
-                        liElement.classList.remove('hide');
-                        liElement.classList.add('show');
-                    }
-
-                })
+            if (this.checkLetter(letter) === true) {
+                for (let i=0; i <liElement.length; i++){
+                    
+                        //liElement[i].classList.remove('hide');
+                        liElement[i].classList.add('show');
+                    
+                }
+                }
             }
-
-        }
+    
  }
 
 //  const game = new Game();
