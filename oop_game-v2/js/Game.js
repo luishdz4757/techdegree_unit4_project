@@ -38,17 +38,19 @@ class Game {
         const fullPhrase = document.queryselectorAll('.letter')
         const correctlyPickedLetters = document.querySelectorAll ('.show')
         if ( fullPhrase === correctlyPickedLetters ) {
-            return true;
+            return this.gameOver(true);
         } else {
             return false;
         }
     }
     removeLife () {
-        missed += 1; 
-        const livesRemaining = document.getElementsByClassName('tries').length();
-        if (livesRemaining === 0) {
-            gameOver();
-        } 
+        this.missed += 1; 
+        const livesRemaining = document.querySelectorAll('.tries img');
+        if ( 1 ) {
+            gameOver(true);
+        } else {
+            this.gameOver();
+        }
     }
     gameOver(gameWon) {
         
