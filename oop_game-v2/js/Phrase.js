@@ -12,6 +12,7 @@
         const splitPhrase = this.phrase.split('');
         splitPhrase.forEach( character => {
             const liElementChar = document.createElement('li');
+            liElementChar.innerHTML = (`${character}`);
             phraseElement.append(liElementChar);
             liElementChar.classList.add('hide');
             if (character === ' ') {
@@ -31,17 +32,12 @@
            }
         }
         showMatchedLetter(letter) {
-            const liElement = document.getElementsByClassName('letter');
-
+            const liElement = document.getElementsByClassName('hide letter');
             if (this.checkLetter(letter) === true) {
-                for (let i=0; i <liElement.length; i++){
-                    
-                        //liElement[i].classList.remove('hide');
-                        liElement[i].classList.add('show');
-                    
-                }
-                }
-            }
+                    liElement.classList.remove('hide');
+                    liElement.classList.add ('show');   
+            }   
+    }
     
  }
 
