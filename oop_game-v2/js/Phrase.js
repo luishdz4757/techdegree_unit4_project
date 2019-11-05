@@ -32,11 +32,13 @@
            }
         }
         showMatchedLetter(letter) {
-            const liElement = document.getElementsByClassName('hide letter');
-            if (this.checkLetter(letter) === true) {
-                    liElement.classList.remove('hide');
-                    liElement.classList.add ('show');   
-            }   
+            const liElement = document.getElementsByClassName('letter');
+            for (let i = 0; i < liElement.length; i++){
+             if (liElement[i].textContent === letter) {
+                    liElement[i].classList.remove('hide');
+                    liElement[i].className = 'letter show';   
+            }
+        }
     }
     
  }
