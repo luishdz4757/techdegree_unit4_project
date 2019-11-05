@@ -35,24 +35,26 @@ class Game {
     }
     
     checkForWin (){
-        const fullPhrase = document.queryselectorAll('.letter')
-        const correctlyPickedLetters = document.querySelectorAll ('.show')
+        const fullPhrase = document.querySelectorAll('.letter').length;
+        const correctlyPickedLetters = document.querySelectorAll ('.show').length;
         if ( fullPhrase === correctlyPickedLetters ) {
             return this.gameOver(true);
         } else {
             return false;
         }
-    }
-  //  removeLife () {
-   //     this.missed += 1; 
-   //     const livesRemaining = document.querySelectorAll('.tries img');
-   //     if ( 1 ) {
-   //         gameOver(true);
-   //     } else {
-    //        this.gameOver();
-    //    }
-   // }
-   // gameOver(gameWon) {
+    };
+    removeLife () {
+        this.missed +=1; 
+        const livesRemaining = document.querySelectorAll('ol img');
+        livesRemaining[this.missed].setAttribute('src','images/lostHeart.png');
+        this.missed ++;
+        if ( this.missed > 4 ) {
+            this.gameOver(true);
+        } else {
+            this.gameOver(false);
+        }
+    };
+    gameOver(gameWon) {
         
-    //}
+    }
   }
