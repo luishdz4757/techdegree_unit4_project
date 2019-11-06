@@ -35,26 +35,29 @@ class Game {
     }
     
     checkForWin (){
-        const fullPhrase = document.querySelectorAll('.letter').length;
-        const correctlyPickedLetters = document.querySelectorAll ('.show').length;
-        if ( fullPhrase === correctlyPickedLetters ) {
+        const fullPhrase = document.querySelectorAll('li .letter').length;
+        const correctlyPickedLetters = document.querySelectorAll ('li .show').length;
+        if ( fullPhrase.length === correctlyPickedLetters.length ) {
             return this.gameOver(true);
         } else {
             return false;
         }
     };
     removeLife () {
-        this.missed +=1; 
+        
         const livesRemaining = document.querySelectorAll('ol img');
         livesRemaining[this.missed].setAttribute('src','images/lostHeart.png');
         this.missed ++;
-        if ( this.missed > 4 ) {
-            this.gameOver(true);
-        } else {
+        if ( this.missed >= 5 ) {
             this.gameOver(false);
         }
     };
     gameOver(gameWon) {
-        
+        if (gameWon){
+            document.getElementById("game-over-message").value = "Good Job! You Revealed The Phrase!";
+
+        } else if (!gameWon){
+            document.getElementById("game-over-message").value = "Sorry Better Luck Next Time.";
+        }
     }
   }
