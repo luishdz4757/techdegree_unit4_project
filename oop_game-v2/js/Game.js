@@ -31,13 +31,24 @@ class Game {
     }
 
     handleInteraction(){
-
-    }
+        
+        const clickedLetter = this.activePhrase.checkLetter(event.target.textContent);
+       
+        if (clickedLetter){
+            this.activePhrase.showMatchedLetter(event.target.textContent);
+            event.target.classList.add('chosen');
+            event.target.disabled = 'true';
+            this.checkForWin();
+        } else if (!clickedLetter){
+            event.target.classList.add('wrong');
+            this.removeLife();
+        }
     
+}
     checkForWin (){
         const fullPhrase = document.querySelectorAll('li .letter').length;
         const correctlyPickedLetters = document.querySelectorAll ('li .show').length;
-        if ( fullPhrase.length === correctlyPickedLetters.length ) {
+        if ( fullPhrase === correctlyPickedLetters) {
             return this.gameOver(true);
         } else {
             return false;
@@ -49,7 +60,7 @@ class Game {
         livesRemaining[this.missed].setAttribute('src','images/lostHeart.png');
         this.missed ++;
         if ( this.missed >= 5 ) {
-            this.gameOver(false);
+            return this.gameOver(false);
         }
     };
     gameOver(gameWon) {
