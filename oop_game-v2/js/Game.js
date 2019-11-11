@@ -59,7 +59,7 @@ class Game {
         const livesRemaining = document.querySelectorAll('ol img');
         livesRemaining[this.missed].setAttribute('src','images/lostHeart.png');
         this.missed ++;
-        if ( this.missed >= 5 ) {
+        if ( this.missed === 5 ) {
             return this.gameOver(false);
         }
     };
