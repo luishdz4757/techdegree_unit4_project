@@ -14,10 +14,8 @@ game.startGame();
 const keyBoardButtons = document.querySelectorAll(".key");
 const button = document.getElementsByTagName('button')
 document.addEventListener('click', function (e){
-    if (e.target.classList.contains('key')){
-        console.log(keyBoardButtons);
-    }
-});
+    game.handleInteraction(button);
+    });
 
 // for (let i =0; i < keyBoardButtons.length; i += 1){
 //     keyBoardButtons[i].addEventListener('click', function (e){
