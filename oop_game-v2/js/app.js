@@ -1,47 +1,25 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
- * Phrase.js */
+ * app.js */
 
- class Phrase {
-     constructor (phrase) {
-        this.phrase = phrase.toLowerCase();
-     }
-     addPhraseToDisplay() {
-         //Targets the phrase
-        const phraseElement = document.querySelector('#phrase ul');
-        const splitPhrase = this.phrase.split('');
-        splitPhrase.forEach( character => {
-            const liElementChar = document.createElement('li');
-            liElementChar.innerHTML = (`${character}`);
-            phraseElement.append(liElementChar);
-            liElementChar.classList.add('hide');
-            if (character === ' ') {
-                liElementChar.classList.add('space');
-            } else {
-                liElementChar.classList.add('letter');
-            }
-            
-        });
+
+let game;
+const gameButton = document.getElementById('btn__reset');
+
+gameButton.addEventListener('click', function() {
+game= new Game;
+game.startGame();
+});
+
+const keyBoardButtons = document.querySelectorAll(".key");
+const button = document.getElementsByTagName('button')
+document.addEventListener('click', function (e){
+    game.handleInteraction(button);
+    });
+
+// for (let i =0; i < keyBoardButtons.length; i += 1){
+//     keyBoardButtons[i].addEventListener('click', function (e){
         
-     }
-        checkLetter(letter){
-            if (this.phrase.includes(letter)){
-               return true;
-           } else {
-               return false;
-           }
-        }
-        showMatchedLetter(letter) {
-            const liElement = document.getElementsByClassName('letter');
-            for (let i = 0; i < liElement.length; i++){
-             if (liElement[i].textContent === letter) {
-                    liElement[i].classList.remove('hide');
-                    liElement[i].className = 'letter show';   
-            }
-        }
-    }
-    
- }
 
-//  const game = new Game();
-//  game.getRandomPhrase().addPhraseToDisplay();
+//     })
+// }
