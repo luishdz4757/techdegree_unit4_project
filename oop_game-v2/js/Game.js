@@ -46,8 +46,8 @@ class Game {
     
 }
     checkForWin (){
-        const fullPhrase = document.querySelectorAll('li .letter').length;
-        const correctlyPickedLetters = document.querySelectorAll ('li .show').length;
+        const fullPhrase = document.querySelectorAll('.letter').length;
+        const correctlyPickedLetters = document.querySelectorAll ('.show').length;
         if ( fullPhrase === correctlyPickedLetters) {
             return this.gameOver(true);
         } else {
