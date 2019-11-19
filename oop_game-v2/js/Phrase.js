@@ -34,8 +34,7 @@
         showMatchedLetter(letter) {
             const liElement = document.getElementsByClassName('letter');
             for (let i = 0; i < liElement.length; i++){
-             if (liElement[i].textContent === letter) {
-                    liElement[i].classList.remove('hide');
+             if (liElement[i].innerHTML === letter) {
                     liElement[i].className = 'letter show';   
             }
         }
