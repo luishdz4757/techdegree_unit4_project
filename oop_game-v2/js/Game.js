@@ -6,7 +6,7 @@ class Game {
     constructor () {
      this.missed = 0;
      this.phrase = this.createPhrases();
-     this.activePhrase = this.getRandomPhrase();
+     this.activePhrase = null;
     }
     //Creates the phrases that are available to be randomly chosen 
     createPhrases(){
@@ -21,26 +21,28 @@ class Game {
     //Randomly chooses from the 5 phrases that were created
     getRandomPhrase(){
         const randomNum = Math.floor(Math.random() * this.phrase.length)
-        return this.phrase[randomNum];
+        console.log(randomNum);
+        return game.phrase[randomNum];
     }
     startGame() {
         const idOverlay = document.getElementById('overlay');
         idOverlay.style.display = 'none';
-        this.getRandomPhrase().addPhraseToDisplay();
+        this.activePhrase = this.getRandomPhrase() ;
+        this.activePhrase.addPhraseToDisplay();
        
     }
 
-    handleInteraction(){
+    handleInteraction(button){
         
-        const clickedLetter = this.activePhrase.checkLetter(event.target.textContent);
+        const clickedLetter = this.activePhrase.checkLetter(button.textContent);
        
         if (clickedLetter){
-            this.activePhrase.showMatchedLetter(event.target.textContent);
-            event.target.classList.add('chosen');
-            event.target.disabled = 'true';
+            this.activePhrase.showMatchedLetter(button.textContent);
+            button.classList.add('chosen');
+            button.disabled = 'true';
             this.checkForWin();
         } else if (!clickedLetter){
-            event.target.classList.add('wrong');
+            button.classList.add('wrong');
             this.removeLife();
         }
     
@@ -63,7 +65,7 @@ class Game {
             return this.gameOver(false);
         }
     };
-    gameOver(gameWon) {
+    gameOver() {
         if (gameWon){
             document.getElementById("game-over-message").value = "Good Job! You Revealed The Phrase!";
 
