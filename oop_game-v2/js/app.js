@@ -12,10 +12,19 @@ game.startGame();
 });
 
 const keyBoardButtons = document.querySelectorAll(".key");
-const button = document.getElementsByTagName('button')
+const button = document.getElementsByTagName('button');
+
 for (let i = 0; i < keyBoardButtons.length; i++){
 keyBoardButtons[i].addEventListener('click', function (e){
-    game.handleInteraction(button);
+   
+    game.handleInteraction(e.target);
     })
 }
 ;
+
+// for (let i =0; i < keyBoardButtons.length; i += 1){
+//     keyBoardButtons[i].addEventListener('click', function (e){
+        
+
+//     })
+// }
