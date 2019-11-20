@@ -45,16 +45,19 @@ class Game {
             button.classList.add('wrong');
             this.removeLife();
         }
+        if (this.checkForWin()) {
+            this.gameOver(true);
+        }
     
 }
     checkForWin (){
         const fullPhrase = document.querySelectorAll('.letter').length;
         const correctlyPickedLetters = document.querySelectorAll ('.show').length;
-        if ( fullPhrase === correctlyPickedLetters) {
-            return this.gameOver(true);
-        } else {
-            return false;
-        }
+        if (fullPhrase === correctlyPickedLetters) {
+            return true
+        };
+           
+        
     };
     removeLife () {
         
@@ -62,15 +65,15 @@ class Game {
         livesRemaining[this.missed].setAttribute('src','images/lostHeart.png');
         this.missed ++;
         if ( this.missed === 5 ) {
-            return this.gameOver(false);
+            this.gameOver(false);
         }
     };
-    gameOver() {
-        if (gameWon){
-            document.getElementById("game-over-message").value = "Good Job! You Revealed The Phrase!";
+    gameOver(gameWon) {
+        if (gameWon === true ){
+            document.getElementById("game-over-message").textContent = "Good Job! You Revealed The Phrase!";
 
-        } else if (!gameWon){
-            document.getElementById("game-over-message").value = "Sorry Better Luck Next Time.";
+        } else if (gameWon === false){
+            document.getElementById("game-over-message").textContent = "Sorry Better Luck Next Time.";
         }
     }
   }
