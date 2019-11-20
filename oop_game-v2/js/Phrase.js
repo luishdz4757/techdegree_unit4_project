@@ -25,6 +25,7 @@
         
      }
         checkLetter(letter){
+            console.log(this.phrase);
             if (this.phrase.includes(letter)){
                return true;
            } else {
