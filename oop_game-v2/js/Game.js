@@ -35,12 +35,13 @@ class Game {
     handleInteraction(button){
         
         const clickedLetter = this.activePhrase.checkLetter(button.textContent);
-       
+//if clicked letter is in phrase then it shows a true and chosen       
         if (clickedLetter){
             this.activePhrase.showMatchedLetter(button.textContent);
             button.classList.add('chosen');
             button.disabled = 'true';
             this.checkForWin();
+//if not in phrase it shows as wrong and you lose a life            
         } else if (!clickedLetter){
             button.classList.add('wrong');
             this.removeLife();
@@ -50,6 +51,8 @@ class Game {
         }
     
 }
+   
+//Checks if all characters in phrase have been revealed for win
     checkForWin (){
         const fullPhrase = document.querySelectorAll('.letter').length;
         const correctlyPickedLetters = document.querySelectorAll ('.show').length;
@@ -59,8 +62,9 @@ class Game {
            
         
     };
+    
+//Removes lives and if you lose 5 lives the game ends    
     removeLife () {
-        
         const livesRemaining = document.querySelectorAll('ol img');
         livesRemaining[this.missed].setAttribute('src','images/lostHeart.png');
         this.missed ++;
@@ -68,12 +72,33 @@ class Game {
             this.gameOver(false);
         }
     };
+
+//Shows message depending if user won or lost game    
     gameOver(gameWon) {
         if (gameWon === true ){
             document.getElementById("game-over-message").textContent = "Good Job! You Revealed The Phrase!";
-
+            document.getElementById('overlay').className = 'win';
         } else if (gameWon === false){
             document.getElementById("game-over-message").textContent = "Sorry Better Luck Next Time.";
+            document.getElementById('overlay').className = 'lose';
         }
+        document.getElementById("overlay").style.display = "block";
+    }
+  
+ //Resets keys that were clicked, resets lives back to 5 for the next game   
+    resetGame() {
+        const phraseLis = document.getElementById('phraseCharacters');
+        phraseLis.innerHTML = '';
+        
+        const oldGameButtons = document.getElementsByClassName('key');
+        for (let i = 0; i < oldGameButtons.length; i++){
+            oldGameButtons[i].disabled = false;
+            oldGameButtons[i].className = 'key';
+        }
+        
+        const resetLives = document.querySelectorAll('ol img');
+            for (let i = 0; i < resetLives.length; i++){
+            resetLives[i].src = 'images/liveHeart.png';
+            }
     }
   }
