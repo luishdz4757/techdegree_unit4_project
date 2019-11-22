@@ -6,8 +6,9 @@
 let game;
 const gameButton = document.getElementById('btn__reset');
 
-gameButton.addEventListener('click', function() {
-game= new Game;
+gameButton.addEventListener('click', () => {
+game = new Game();
+game.resetGame();
 game.startGame();
 });
 
@@ -16,7 +17,6 @@ const button = document.getElementsByTagName('button');
 
 for (let i = 0; i < keyBoardButtons.length; i++){
 keyBoardButtons[i].addEventListener('click', function (e){
-   
     game.handleInteraction(e.target);
     })
 }
