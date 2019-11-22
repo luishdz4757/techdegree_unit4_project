@@ -24,6 +24,8 @@
         });
         
      }
+  
+//Checks to see if the letter pressed is in the phrase    
         checkLetter(letter){
             console.log(this.phrase);
             if (this.phrase.includes(letter)){
@@ -32,6 +34,8 @@
                return false;
            }
         }
+
+//if letter is in phrase and is chosen, it will be displayed       
         showMatchedLetter(letter) {
             const liElement = document.getElementsByClassName('letter');
             for (let i = 0; i < liElement.length; i++){
