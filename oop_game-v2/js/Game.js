@@ -35,21 +35,21 @@ class Game {
     handleInteraction(button){
         
         const clickedLetter = this.activePhrase.checkLetter(button.textContent);
+        button.disabled = 'true';
 //if clicked letter is in phrase then it shows a true and chosen       
         if (clickedLetter){
             this.activePhrase.showMatchedLetter(button.textContent);
             button.classList.add('chosen');
             button.disabled = 'true';
             this.checkForWin();
+            if (this.checkForWin()) {
+              this.gameOver(true);
+            }
 //if not in phrase it shows as wrong and you lose a life            
         } else if (!clickedLetter){
             button.classList.add('wrong');
             this.removeLife();
         }
-        if (this.checkForWin()) {
-            this.gameOver(true);
-        }
-    
 }
    
 //Checks if all characters in phrase have been revealed for win
