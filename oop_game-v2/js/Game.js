@@ -83,7 +83,7 @@ class Game {
             document.getElementById('overlay').className = 'lose';
         }
         document.getElementById("overlay").style.display = "block";
-        resetGame();
+        this.resetGame();
     }
   
  //Resets keys that were clicked, resets lives back to 5 for the next game   
