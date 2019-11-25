@@ -8,7 +8,6 @@ const gameButton = document.getElementById('btn__reset');
 
 gameButton.addEventListener('click', () => {
 game = new Game();
-game.resetGame();
 game.startGame();
 });
 
